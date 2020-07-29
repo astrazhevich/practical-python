@@ -3,13 +3,16 @@
 # Exercise 1.27
 # import os
 
+import csv
+
 def portfolio_cost(filename):
     f = open(filename, 'rt')
-    headers = next(f)
+    rows = csv.reader(f)
+    headers = next(rows)
     total = 0
     line_num = 1
-    for line in f:
-        row = line.split(',')
+    for row in rows:
+        # row = line.split(',')
         try: 
             total = total + int(row[1]) * float(row[2].strip())
         except ValueError:
