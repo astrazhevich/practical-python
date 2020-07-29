@@ -4,6 +4,7 @@
 # import os
 
 import csv
+import sys
 
 def portfolio_cost(filename):
     f = open(filename, 'rt')
@@ -21,5 +22,11 @@ def portfolio_cost(filename):
     return(total)
     f.close()
 
-# cost = portfolio_cost('Data/portfolio.csv')
-# print(f'Total cost {cost:0.2f}')
+if len(sys.argv) == 2:
+    filename = sys.argv[1]
+else:
+    filename = 'Data/portfolio.csv'
+
+cost = portfolio_cost(filename)
+print('Total cost:', cost)
+    
